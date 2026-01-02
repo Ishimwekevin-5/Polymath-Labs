@@ -1,0 +1,5 @@
+{
+  "name": "Polymath Labs Clone",
+  "description": "A high-fidelity clone of the Polymath Labs experimental showcase, featuring interactive AI experiments powered by the Gemini API.",
+  "requestFramePermissions": []
+}
