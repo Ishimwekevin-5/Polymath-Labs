@@ -3,7 +3,7 @@ import React from 'react';
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent px-8 h-20 flex items-center justify-between text-black">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-xl border-b border-black/5 px-8 h-20 flex items-center justify-between text-black transition-all duration-300">
       {/* Left Links */}
       <div className="flex items-center gap-6">
         <a href="#" className="text-sm font-medium hover:opacity-70 transition-opacity">About</a>

@@ -6,14 +6,20 @@ interface GalleryCardProps {
   item: GalleryItem;
 }
 
+const Tooltip: React.FC<{ text: string }> = ({ text }) => (
+  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-black text-white text-[9px] font-bold uppercase tracking-widest rounded opacity-0 group-hover/btn:opacity-100 transition-all duration-200 pointer-events-none whitespace-nowrap translate-y-1 group-hover/btn:translate-y-0 shadow-lg z-50">
+    {text}
+  </div>
+);
+
 const GalleryCard: React.FC<GalleryCardProps> = ({ item }) => {
   const isMusic = item.tool === 'MusicFX';
 
   return (
-    <div className={`relative group rounded-[2.5rem] overflow-hidden aspect-[4/5] cursor-pointer shadow-lg ${item.bgColor || 'bg-black'}`}>
+    <div className={`relative group rounded-[2.5rem] overflow-hidden aspect-[4/5] cursor-pointer shadow-lg transition-all duration-500 ${item.bgColor || 'bg-black'}`}>
       
       {/* Tool Badge */}
-      <div className="absolute top-6 right-6 z-20">
+      <div className="absolute top-6 right-6 z-20 group/btn">
         <div className={`px-5 py-2.5 rounded-full text-sm font-bold backdrop-blur-md shadow-sm transition-all duration-300 ${
           isMusic 
           ? 'bg-transparent border border-black/20 text-black group-hover:bg-black group-hover:text-white' 
@@ -21,6 +27,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({ item }) => {
         }`}>
           {item.tool}
         </div>
+        <Tooltip text={`Created with ${item.tool}`} />
       </div>
 
       {/* Media Content */}
@@ -52,14 +59,17 @@ const GalleryCard: React.FC<GalleryCardProps> = ({ item }) => {
 
             {/* Playback Controls Mockup */}
             <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between gap-3">
-               <div className="w-12 h-12 rounded-full border border-black/20 flex items-center justify-center hover:bg-black hover:text-white transition-colors">
+               <div className="relative group/btn w-12 h-12 rounded-full border border-black/20 flex items-center justify-center hover:bg-black hover:text-white transition-colors">
                   <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                  <Tooltip text="View Info" />
                </div>
-               <div className="w-16 h-12 rounded-full bg-black text-white flex items-center justify-center hover:scale-105 transition-transform">
+               <div className="relative group/btn w-16 h-12 rounded-full bg-black text-white flex items-center justify-center hover:scale-105 transition-transform">
                   <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current"><path d="M8 5v14l11-7z" /></svg>
+                  <Tooltip text="Play Track" />
                </div>
-               <div className="w-12 h-12 rounded-full border border-black/20 flex items-center justify-center hover:bg-black hover:text-white transition-colors">
+               <div className="relative group/btn w-12 h-12 rounded-full border border-black/20 flex items-center justify-center hover:bg-black hover:text-white transition-colors">
                   <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 19l-7-7 7-7" /></svg>
+                  <Tooltip text="Skip Next" />
                </div>
             </div>
           </div>
